@@ -22,13 +22,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AudioConverter\AudioConverter.py" />
-    <Compile Include="AudioConverter\FileOperations.py">
+    <Compile Include="AudioConverter\CommandLine.pyw">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\FileOperations.pyw">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioConverter\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AudioConverter\Conversion.py">
+    <Compile Include="AudioConverter\Conversion.pyw">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Test\Scratch.py">
