@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>093950cf-d884-49ac-b18e-8cc261718574</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>AudioConverter.py</StartupFile>
+    <StartupFile>AudioConverter\AudioConverter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,7 +21,23 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AudioConverter.py" />
+    <Compile Include="AudioConverter\AudioConverter.py" />
+    <Compile Include="AudioConverter\FileOperations.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\Conversion.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Test\Scratch.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AudioConverter\" />
+    <Folder Include="Test\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
