@@ -1,0 +1,8 @@
+{
+  "currentPath": "currentPath",
+  "fileInput": "fileInput",
+  "fileOutputFlac": "fileOutput",
+  "fileOutputMp3": "fileOutputMp3",
+  "continuousRun": "N",
+  "cleanUp": "N"
+}

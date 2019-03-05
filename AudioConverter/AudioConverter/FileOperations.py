@@ -1,5 +1,12 @@
-import os
 # FileOperations module
+import os
+import json
+
+def InitVariables():
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    with open(dir_path + '\config.json', 'r') as f:
+        config = json.load(f)
+    return config
 
 def getAllElementsInFolder(path):
     allFiles = []
