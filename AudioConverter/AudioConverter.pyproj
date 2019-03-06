@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>093950cf-d884-49ac-b18e-8cc261718574</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>AudioConverter\AudioConverter.py</StartupFile>
+    <StartupFile>Test\Scratch.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,24 +22,28 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AudioConverter\AudioConverter.py" />
-    <Compile Include="AudioConverter\CommandLine.pyw">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="AudioConverter\FileOperations.pyw">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AudioConverter\__init__.py">
+    <Compile Include="AudioConverter\Programs\LameProgram.py" />
+    <Compile Include="AudioConverter\Programs\MetaFlacProgram.py" />
+    <Compile Include="AudioConverter\Programs\FlacProgram.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\Programs\Program.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioConverter\Conversion.pyw">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AudioConverter\Programs\__init__.py" />
     <Compile Include="Test\Scratch.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AudioConverter\" />
+    <Folder Include="AudioConverter\Programs\" />
     <Folder Include="Test\" />
   </ItemGroup>
   <ItemGroup>

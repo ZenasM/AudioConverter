@@ -1,10 +1,14 @@
 # Conversion module
 import subprocess
 import re
+from .Programs.FlacProgram import FlacProgram
+from .Programs.MetaFlacProgram import MetaFlacProgram
+from .Programs.LameProgram import LameProgram
+
 
 def FlacDecode(file):
     tagDict = GetTags(file)
-    flacArgs = ["flac", "--decode", "--stdout", "--silent", file]
+    flacArgs = FlacProgram().GetDefault(file) #["flac", "--decode", "--stdout", "--silent", file]
     flacProcess = subprocess.Popen(flacArgs, stdout=subprocess.PIPE,)
     decodedData = flacProcess.communicate()[0]   # Returns tuple (stdout, stderr). We only care about the raw data from stdout.
     print("Decoding " + file + " complete.")
@@ -13,7 +17,7 @@ def FlacDecode(file):
 def ConvertMp3(file, rawData):
     fileData = rawData[0]
     tagData = rawData[1]
-    lameArgs = ["lame", "--silent", "-V0", "-", file[:-5] + ".mp3"]
+    lameArgs = LameProgram().GetDefault("-", file[:-5] + ".mp3") #["lame", "--silent", "-V0", "-", file[:-5] + ".mp3"]
     lameProcess = subprocess.Popen(lameArgs, stdin=subprocess.PIPE)
     lameProcess.communicate(input=fileData)
     print("MP3 Conversion for " + file + " complete.")
@@ -23,7 +27,7 @@ def ConvertFlacToMp3(file):
     ConvertMp3(file, rawData)
 
 def GetTags(file):
-    metaFlacArgs = ["metaflac", "--list", "--block-type=VORBIS_COMMENT", file]
+    metaFlacArgs = MetaFlacProgram().GetDefault(file) #["metaflac", "--list", "--block-type=VORBIS_COMMENT", file]
     metaFlacProcess = subprocess.Popen(metaFlacArgs, stdout=subprocess.PIPE,)
     tagData = metaFlacProcess.communicate()[0]
 
