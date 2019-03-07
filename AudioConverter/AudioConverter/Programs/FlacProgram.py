@@ -17,17 +17,9 @@ class FlacProgram(Program):
     __compression_level_8   = False
     ___file                 = ""
 
-    def GetDefault(self, file):
-        self.decode = True
-        self.stdout = True
-        self.silent = True
+    def SetDefault(self, file):
+        self.__decode = True
+        self.__stdout = True
+        self.__silent = True
         self.___file = file
-        return self.GetArgList()
-
-    #def GetArgList(self):
-    #    argList = [self.programName]
-    #    for attr in dir(self):
-    #        if not callable(getattr(self, attr)) and not attr.startswith("__") and not attr == "programName":
-    #            if getattr(self, attr):
-    #                argList.append(attr.replace("_", "-"))
-    #    return argList
+        return self

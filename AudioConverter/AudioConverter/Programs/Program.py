@@ -2,12 +2,15 @@ class Program(object):
     def GetArgList(self):
         argList = [self.programName]
         for attr in dir(self):
-            currentAttr = getattr(self, attr)
-            if not callable(currentAttr) and not attr.startswith("__") and not attr == "programName":
-                if currentAttr == True:
-                    argList.append("--" + attr.replace("_", "-"))
-                elif currentAttr == False or currentAttr == "":
+            currentAttrName = attr.replace("_" + type(self).__name__, "")
+            currentAttrValue = getattr(self, attr)
+            if not callable(currentAttrValue) and not attr.startswith("__") and not currentAttrName == "programName":
+                if currentAttrValue == True:
+                    argList.append(currentAttrName.replace("_", "-"))
+                elif currentAttrValue == False or currentAttrValue == "":
                     pass
                 else:
-                    argList.append(currentAttr)
+                    if "_WITHNAME" in currentAttrName:  # Variables with _WITHNAME need to have both varname and value as arguments
+                        argList.append(currentAttrName.replace("_WITHNAME", "").replace("_", "-"))
+                    argList.append(currentAttrValue)
         return argList

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>093950cf-d884-49ac-b18e-8cc261718574</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Test\Scratch.py</StartupFile>
+    <StartupFile>AudioConverter\AudioConverter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,7 +33,7 @@
     <Compile Include="AudioConverter\Programs\Program.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AudioConverter\Conversion.pyw">
+    <Compile Include="AudioConverter\FileConversion.pyw">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioConverter\Programs\__init__.py" />
