@@ -260,3 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 /AudioConverter/Test
+/AudioConverter/env
+/AudioConverter/AudioConverter/config.json
