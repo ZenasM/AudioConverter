@@ -2,9 +2,11 @@
 import subprocess
 import re
 import concurrent.futures
+import ID3Tag
 from Programs.FlacProgram import FlacProgram
 from Programs.MetaFlacProgram import MetaFlacProgram
 from Programs.LameProgram import LameProgram
+
 
 def TranscodeFlacToMp3(file):
     rawData = DecodeFlacFile(file)
@@ -43,6 +45,8 @@ def RetrieveIdTags(file):
     metaFlacArgs = MetaFlacProgram().SetDefault(file).GetArgList()
     metaFlacProcess = subprocess.Popen(metaFlacArgs, stdout=subprocess.PIPE,)
     tagData = metaFlacProcess.communicate()[0]
+
+
 
     tagDict = {
         'TITLE': '',

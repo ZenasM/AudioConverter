@@ -22,9 +22,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AudioConverter\AudioConverter - Copy.py" />
     <Compile Include="AudioConverter\AudioConverter.py" />
     <Compile Include="AudioConverter\FileOperations.pyw">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\ID3Tag.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioConverter\Programs\LameProgram.py" />
@@ -50,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AudioConverter\config.json" />
+    <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
