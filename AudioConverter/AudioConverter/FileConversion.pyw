@@ -1,20 +1,23 @@
 # FileConversion module
 import subprocess
-import re
 import concurrent.futures
-import ID3Tag
+import FileOperations
 from Programs.FlacProgram import FlacProgram
-from Programs.MetaFlacProgram import MetaFlacProgram
 from Programs.LameProgram import LameProgram
 
+def TranscodeFlacToMp3(file, **keyword_parameters):
+    outputFile = file[:-5] + ".mp3"
+    if "output" in keyword_parameters:
+        outputFile = keyword_parameters["output"]
+    FileOperations.EnsurePath(os.path.dirname(outputFile))
+    # Need confirmation from user.
 
-def TranscodeFlacToMp3(file):
     rawData = DecodeFlacFile(file)
-    EncodeMp3(file, rawData)
+    EncodeMp3(file, rawData, output=outputFile)
 
 def DecodeFlacFile(file):
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=2)
-    tagsResult = executor.submit(RetrieveIdTags, file)
+    tagsResult = executor.submit(FileOperations.RetrieveIdTags, file)
     dataResult = executor.submit(DecodeFlacData, file)
     tags = tagsResult.result()
     data = dataResult.result()
@@ -33,37 +36,15 @@ def DecodeMp3(file):
 def EncodeFlac(rawData):
     pass
 
-def EncodeMp3(file, rawData):
+def EncodeMp3(file, rawData, **keyword_parameters):
+    outputFile = file[:-5] + ".mp3"
+    if "output" in keyword_parameters:
+        outputFile = keyword_parameters["output"]
+
     fileData = rawData[0]
     metaData = rawData[1]
-    lameArgs = LameProgram().SetDefault(metaData, "-", file[:-5] + ".mp3").GetArgList()
+    lameArgs = LameProgram().SetDefault(metaData, "-", outputFile).GetArgList()
     lameProcess = subprocess.Popen(lameArgs, stdin=subprocess.PIPE)
     lameProcess.communicate(input=fileData)
     print("MP3 Conversion for " + file + " complete.")
-
-def RetrieveIdTags(file):
-    metaFlacArgs = MetaFlacProgram().SetDefault(file).GetArgList()
-    metaFlacProcess = subprocess.Popen(metaFlacArgs, stdout=subprocess.PIPE,)
-    tagData = metaFlacProcess.communicate()[0]
-
-
-
-    tagDict = {
-        'TITLE': '',
-        'ARTIST': '',
-        'ALBUM': '',
-        'YEAR': '',
-        'DATE': '',
-        'COMMENT': '',
-        'TRACKNUMBER': '',
-        'TRACKTOTAL': '',
-        'GENRE': ''
-    }
-
-    pattern = r'\s+comment\[\d+\]:\s+(\w+)=(.*)\r\n'
-    for name, value in re.findall(pattern, tagData.decode()):
-        tagDict[name.upper()] = value
-
-    print(file + " tags retrieved.")
-    return tagDict
 

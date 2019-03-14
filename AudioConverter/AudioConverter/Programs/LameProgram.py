@@ -23,29 +23,7 @@ class LameProgram(Program):
     def SetDefault(self, tagDict, input, output):
         self.quality = "-V0"
         self.__silent = True
-        self.__tt_WITHNAME = tagDict["TITLE"]      
-        self.__ta_WITHNAME = tagDict["ARTIST"]     
-        self.__tl_WITHNAME = tagDict["ALBUM"]      
-        self.__ty_WITHNAME = tagDict["YEAR"]       
-        self.__tc_WITHNAME = tagDict["COMMENT"]    
-        self.__tn_WITHNAME = tagDict["TRACKNUMBER"]
-        self.__tg_WITHNAME = tagDict["GENRE"]      
-        #self.__tv_WITHNAME = { "TXXX": "Testing=123" }
-
-        # TEST CODE
-        
-        for k, v in tagDict.items():
-            key = process.extractOne(k, ID3Tag.matchingStrings, scorer=fuzz.ratio) # Tuple of (key, ratio)
-            # Fuzzy matching doesn't take into account string length. Track and Tracktotal match...
-            if key[1] > 80:
-                self.__tv_WITHNAME[ID3Tag.matchingDict[key[0]]] = v
-            else:
-                if not isinstance(self.__tv_WITHNAME["TXXX"], list):
-                    self.__tv_WITHNAME["TXXX"] = []
-                self.__tv_WITHNAME["TXXX"].append(k + "=" + v)
-
-        # TEST CODE
-        #__ti = tagDict[""]
+        self.__tv_WITHNAME = tagDict
         self.__priority_WITHNAME = "4"
         self.___input = input
         self.___output = output
