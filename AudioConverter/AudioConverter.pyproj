@@ -24,10 +24,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AudioConverter\AudioConverter.py" />
+    <Compile Include="AudioConverter\AudioFile\MpegFile.py" />
+    <Compile Include="AudioConverter\AudioFile\FlacFile.py" />
+    <Compile Include="AudioConverter\AudioFile\AudioFile.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\AudioFile\__init__.py" />
     <Compile Include="AudioConverter\FileOperations.pyw">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioConverter\ID3Tag.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AudioConverter\TranscodeEngine.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AudioConverter\Programs\LameProgram.py" />
@@ -48,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AudioConverter\" />
+    <Folder Include="AudioConverter\AudioFile\" />
     <Folder Include="AudioConverter\Programs\" />
     <Folder Include="Test\" />
   </ItemGroup>

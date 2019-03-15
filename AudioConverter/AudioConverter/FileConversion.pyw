@@ -1,4 +1,5 @@
 # FileConversion module
+import os
 import subprocess
 import concurrent.futures
 import FileOperations
@@ -30,7 +31,7 @@ def DecodeFlacData(file):
     print("Decoding " + file + " complete.")
     return decodedData
 
-def DecodeMp3(file):
+def DecodeMpeg(file):
     pass
 
 def EncodeFlac(rawData):

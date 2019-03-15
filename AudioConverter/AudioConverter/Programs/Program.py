@@ -1,4 +1,5 @@
 import collections
+
 class Program(object):
     def GetArgList(self):
         argList = [self.programName]
