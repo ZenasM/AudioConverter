@@ -15,10 +15,17 @@ class FlacProgram(Program):
     __compression_level_6   = False
     __compression_level_7   = False
     __compression_level_8   = False
+    __tag                   = {}
     ___file                 = ""
 
-    def SetDefault(self, file):
+    def SetDecodeDefault(self, file):
         self.__decode = True
+        self.__stdout = True
+        self.__silent = True
+        self.___file = file
+        return self
+
+    def SetEncodeDefault(self, file):
         self.__stdout = True
         self.__silent = True
         self.___file = file

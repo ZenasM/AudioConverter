@@ -20,7 +20,7 @@ class LameProgram(Program):
     ___input                = ""
     ___output               = ""
 
-    def SetDefault(self, tagDict, input, output):
+    def SetEncodeDefault(self, tagDict, input, output):
         self.quality = "-V0"
         self.__silent = True
         self.__tv_WITHNAME = tagDict

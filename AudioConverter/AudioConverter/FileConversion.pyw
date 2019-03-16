@@ -25,7 +25,7 @@ def DecodeFlacFile(file):
     return [ data, tags ]
 
 def DecodeFlacData(file):
-    flacArgs = FlacProgram().SetDefault(file).GetArgList()
+    flacArgs = FlacProgram().SetDecodeDefault(file).GetArgList()
     flacProcess = subprocess.Popen(flacArgs, stdout=subprocess.PIPE,)
     decodedData = flacProcess.communicate()[0]   # Returns tuple (stdout, stderr). We only care about the raw data from stdout.
     print("Decoding " + file + " complete.")
@@ -44,7 +44,7 @@ def EncodeMp3(file, rawData, **keyword_parameters):
 
     fileData = rawData[0]
     metaData = rawData[1]
-    lameArgs = LameProgram().SetDefault(metaData, "-", outputFile).GetArgList()
+    lameArgs = LameProgram().SetEncodeDefault(metaData, "-", outputFile).GetArgList()
     lameProcess = subprocess.Popen(lameArgs, stdin=subprocess.PIPE)
     lameProcess.communicate(input=fileData)
     print("MP3 Conversion for " + file + " complete.")

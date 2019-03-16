@@ -5,7 +5,7 @@ class AudioFile(object):
     filePath = ""
     fileName = ""
     fileType = ""
-    audioData = ""
+    rawAudioData = ""
     metaData = ""
 
     def __init__(self, filePath):
